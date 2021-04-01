@@ -93,11 +93,6 @@ function NewsList() {
 
         let body = { titulo, autor, texto }
 
-        /*Alert.alert(
-            "Update",
-            JSON.stringify(body),
-        )*/
-
         await fetch(`api/noticias/${idEditar}`, {
             method: 'PATCH',
             body: JSON.stringify(body)

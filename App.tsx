@@ -23,36 +23,41 @@ createServer({
   routes() {
     this.namespace = 'api'
 
+    //Listagem de noticia - Da mais recente para mais antiga
     this.get('/noticias', (schema) => {
       return schema.noticias.all().sort((a, b) => {
         return a.id < b.id;
       });
     })
 
+    //Insersão de noticias
     this.post('/noticias', (schema, request) => {
       const attrs = JSON.parse(request.requestBody)
 
       return schema.noticias.create(attrs)
     })
 
+    //Remoção de noticias
     this.del('/noticias/:id', (schema, request) => {
       const id = request.params.id
 
       return schema.noticias.find(id).destroy();
     })
 
+    //Alteração de noticias - update
     this.patch('/noticias/:id', (schema, request) => {
       const id = request.params.id
-      const attrs = request.requestBody
+      const attrs = JSON.parse(request.requestBody)
 
-      Alert.alert(
+      /*Alert.alert(
         "Update API",
         attrs,
-      )
+      )*/
 
-      return schema.noticias.find(id).update(attrs);
+      return schema.noticias.find(id).update('titulo', attrs.titulo).update('autor', attrs.autor).update('texto', attrs.texto);
     })
 
+    //Retorno da pesquisa - retorna a chave com o titulo pesquisado - Where retorna os que contem - Não esta Keysensitive
     this.get("/noticias_query", (schema, request) => {
       let titulo = request.queryParams.titulo;
 
