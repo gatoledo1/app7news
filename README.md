@@ -1,3 +1,8 @@
+Teste de aptidão com React Native: Empresa Code7
+
+Desenvolver um app de um portal de notícias. Cadastrando, editando, excluindo e pesquisando por notícias
+OBS: Não desenvolver backend
+
 # Instruções para executar o app em celulares Android
 
 O app foi construído com Expo-CLI, então você poderá rodar o app 7News instalando o <a href="https://play.google.com/store/apps/details?id=host.exp.exponent&hl=pt_BR" target="_blank">Expo Go</a> na play Store
